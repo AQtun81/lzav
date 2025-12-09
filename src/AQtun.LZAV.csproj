@@ -5,7 +5,7 @@
     <PackageProjectUrl>https://github.com/AQtun81/lzav</PackageProjectUrl>
     <Authors>AQtun</Authors>
     <PackageTags>lzav compression</PackageTags>
-    <Version>5.7.0</Version>
+    <Version>5.8.0</Version>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/avaneev/lzav</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
