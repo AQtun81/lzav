@@ -1,4 +1,5 @@
 $functionsToExport = @(
+    'lzav_compress',
     'lzav_compress_bound',
     'lzav_compress_default',
     'lzav_compress_bound_hi',

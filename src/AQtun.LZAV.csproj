@@ -5,12 +5,13 @@
     <PackageProjectUrl>https://github.com/AQtun81/lzav</PackageProjectUrl>
     <Authors>AQtun</Authors>
     <PackageTags>lzav compression</PackageTags>
-    <Version>5.8.0</Version>
+    <Version>5.8.1</Version>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/avaneev/lzav</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     
     <TargetFrameworks>net7.0;net5.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
     <LangVersion>latest</LangVersion>
