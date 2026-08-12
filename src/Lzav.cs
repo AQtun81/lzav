@@ -9,9 +9,9 @@ namespace AQtun.LZAV
     public static partial class Lzav
     {
         #if NET5_0_OR_GREATER || NETCOREAPP || NETSTANDARD
-        private const string LZAV_DLL = "lzav";
+        private const string LZAV_DLL = "liblzav";
         #else // NETFRAMEWORK
-        private const string LZAV_DLL = "lzav.dll";
+        private const string LZAV_DLL = "liblzav.dll";
         #endif
         
         /* COMPRESS

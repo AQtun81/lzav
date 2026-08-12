@@ -5,7 +5,7 @@
     <PackageProjectUrl>https://github.com/AQtun81/lzav</PackageProjectUrl>
     <Authors>AQtun</Authors>
     <PackageTags>lzav compression</PackageTags>
-    <Version>5.17.0</Version>
+    <Version>5.17.1</Version>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/avaneev/lzav</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -13,7 +13,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     
-    <TargetFrameworks>net7.0;net5.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
+    <TargetFrameworks>net10.0;net8.0;net7.0;net5.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
@@ -22,7 +22,9 @@
 
   <ItemGroup>
     <None Include="runtimes\**\*" Pack="true" PackagePath="runtimes\%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="static\**\*" Pack="true" PackagePath="static\%(RecursiveDir)%(Filename)%(Extension)" />
     <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="AQtun.LZAV.targets" Pack="true" PackagePath="buildTransitive\AQtun.LZAV.targets"/>
   </ItemGroup>
 
   <PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">

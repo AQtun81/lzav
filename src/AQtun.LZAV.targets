@@ -1,0 +1,25 @@
+<Project>
+  <ItemGroup Condition="'$(PublishAot)' == 'true' AND '$(RuntimeIdentifier)' != ''">
+  
+    <NativeLibrary Include="$(MSBuildThisFileDirectory)..\static\$(RuntimeIdentifier)\liblzav.lib" 
+                   Condition="$(RuntimeIdentifier.Contains('win'))" />
+
+    <NativeLibrary Include="$(MSBuildThisFileDirectory)..\static\$(RuntimeIdentifier)\liblzav.a" 
+                   Condition="$(RuntimeIdentifier.Contains('linux')) OR $(RuntimeIdentifier.Contains('osx'))" />
+
+    <DirectPInvoke Include="liblzav" />
+  </ItemGroup>
+
+  <Target Name="RemoveDynamicLibrariesForAot" 
+          AfterTargets="ComputeFilesToPublish" 
+          Condition="'$(PublishAot)' == 'true' AND '$(RuntimeIdentifier)' != ''">
+          
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" 
+                             Condition="
+                     '%(Filename)%(Extension)' == 'liblzav.dll' OR
+                     '%(Filename)%(Extension)' == 'liblzav.so' OR
+                     '%(Filename)%(Extension)' == 'liblzav.dylib'" />
+    </ItemGroup>
+  </Target>
+</Project>

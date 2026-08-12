@@ -15,7 +15,7 @@ jobs:
         target: [linux-x64]
     steps:
     - name: Checkout code with submodules
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: recursive
     
@@ -26,7 +26,7 @@ jobs:
         pwsh build-target.ps1 ${{ matrix.target }}
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ matrix.target }}-build
         path: src/
@@ -38,7 +38,7 @@ jobs:
         target: [linux-arm, linux-arm64]
     steps:
       - name: Checkout code with submodules
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -49,7 +49,7 @@ jobs:
           pwsh build-target.ps1 ${{ matrix.target }}
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.target }}-build
           path: src/
@@ -61,7 +61,7 @@ jobs:
         target: [osx-arm64, osx-x64]
     steps:
     - name: Checkout code with submodules
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: recursive
     
@@ -72,7 +72,7 @@ jobs:
         pwsh build-target.ps1 ${{ matrix.target }}
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ matrix.target }}-build
         path: src/
@@ -84,7 +84,7 @@ jobs:
         target: [win-x64, win-x86]
     steps:
     - name: Checkout code with submodules
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: recursive
     
@@ -95,7 +95,7 @@ jobs:
         pwsh build-target.ps1 ${{ matrix.target }}
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ matrix.target }}-build
         path: src/
@@ -107,7 +107,7 @@ jobs:
         target: [win-arm64]
     steps:
     - name: Checkout code with submodules
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: recursive
     
@@ -118,32 +118,32 @@ jobs:
         pwsh build-target.ps1 ${{ matrix.target }}
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ matrix.target }}-build
         path: src/
 
   publish-nuget:
-    needs: [build-linux, build-macos, build-windows, build-windows-arm]
+    needs: [build-linux, build-linux-arm, build-macos, build-windows, build-windows-arm]
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code with submodules
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         submodules: recursive
       
     - name: Download all artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         path: src
         pattern: '*-build'
         merge-multiple: true
         
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
       
     - name: Push to NuGet
       shell: pwsh
