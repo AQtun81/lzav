@@ -10,7 +10,7 @@
     <DirectPInvoke Include="liblzav" />
   </ItemGroup>
 
-  <Target Name="RemoveDynamicLibrariesForAot" 
+  <Target Name="RemoveDynamicLibrariesWhenStaticallyLinkingLzav" 
           AfterTargets="ComputeFilesToPublish" 
           Condition="'$(PublishAot)' == 'true' AND '$(RuntimeIdentifier)' != ''">
           
