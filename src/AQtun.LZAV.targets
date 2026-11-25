@@ -10,6 +10,10 @@
     <DirectPInvoke Include="liblzav" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">
+    <NativeFileReference Include="$(MSBuildThisFileDirectory)..\native-src\liblzav.c" />
+  </ItemGroup>
+
   <Target Name="RemoveDynamicLibrariesWhenStaticallyLinkingLzav" 
           AfterTargets="ComputeFilesToPublish" 
           Condition="'$(PublishAot)' == 'true' AND '$(RuntimeIdentifier)' != ''">

@@ -5,7 +5,7 @@
     <PackageProjectUrl>https://github.com/AQtun81/lzav</PackageProjectUrl>
     <Authors>AQtun</Authors>
     <PackageTags>lzav compression</PackageTags>
-    <Version>7.2.0</Version>
+    <Version>7.2.2</Version>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/avaneev/lzav</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -23,6 +23,7 @@
   <ItemGroup>
     <None Include="runtimes\**\*" Pack="true" PackagePath="runtimes\%(RecursiveDir)%(Filename)%(Extension)" />
     <None Include="static\**\*" Pack="true" PackagePath="static\%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="native-src\**\*" Pack="true" PackagePath="native-src\%(RecursiveDir)%(Filename)%(Extension)" />
     <None Include="..\README.md" Pack="true" PackagePath="\"/>
     <None Include="AQtun.LZAV.targets" Pack="true" PackagePath="buildTransitive\AQtun.LZAV.targets"/>
   </ItemGroup>

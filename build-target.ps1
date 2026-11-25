@@ -6,15 +6,16 @@ New-Item -Force -ItemType directory -Path src/static/$target
 # Compiler setup
 switch ($target)
 {
-  "linux-arm"   { sudo apt-get install -y gcc-arm-linux-gnueabihf }
-  "linux-arm64" {  }
-  "linux-x64"   {  }
-  "linux-x86"   { sudo apt-get install -y gcc-i686-linux-gnu }
-  "win-arm64"   {  }
-  "win-x64"     {  }
-  "win-x86"     {  }
-  "osx-arm64"   {  }
-  "osx-x64"     {  }
+  "browser-wasm" {  }
+  "linux-arm"    { sudo apt-get install -y gcc-arm-linux-gnueabihf }
+  "linux-arm64"  {  }
+  "linux-x64"    {  }
+  "linux-x86"    { sudo apt-get install -y gcc-i686-linux-gnu }
+  "win-arm64"    {  }
+  "win-x64"      {  }
+  "win-x86"      {  }
+  "osx-arm64"    {  }
+  "osx-x64"      {  }
   {$_ -like "android-*"}
   {
     if (-not $env:ANDROID_NDK_HOME)
@@ -28,6 +29,12 @@ switch ($target)
 # Build
 switch ($target)
 {
+  "browser-wasm"
+  {
+    New-Item -itemtype directory -force "src/native-src/" | out-null
+    Copy-Item "temp/lzav.c" -destination "src/native-src/liblzav.c"
+    Copy-Item "temp/lzav.h" -destination "src/native-src/lzav.h"
+  }
   "linux-arm"
   {
     arm-linux-gnueabihf-gcc -c temp/lzav.c -o src/static/$target/liblzav.o -O2 -fPIC
